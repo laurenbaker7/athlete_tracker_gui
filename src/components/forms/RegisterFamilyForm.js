@@ -30,7 +30,7 @@ function RegisterFamilyForm() {
       <button type="submit">Register Family</button>
       {loading && <p>Submitting...</p>}
       {error && <p style={{ color: 'red' }}>❌ {error.message}</p>}
-      {data && <p style={{ color: 'green' }}>✅ Family "{data.registerFamily.name}" registered!</p>}
+      {data && <p style={{ color: 'green' }}>✅ Family "{data.registerFamily.name}" registered with ID {data.registerFamily.id}!</p>}
     </form>
   );
 }
