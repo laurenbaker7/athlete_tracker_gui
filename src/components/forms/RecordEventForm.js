@@ -4,10 +4,11 @@ import { RECORD_EVENT } from '../../graphql/mutations';
 
 function RecordEventForm() {
   const [form, setForm] = useState({
-    familyId: '',
+    username: '',
+    description: '',
     latitude: '',
     longitude: '',
-    description: ''
+    teamName: ''
   });
 
   const [recordEvent, { data, loading, error }] = useMutation(RECORD_EVENT);
@@ -21,13 +22,14 @@ function RecordEventForm() {
     try {
       await recordEvent({
         variables: {
-          familyId: parseInt(form.familyId),
+          username: form.username,
+          description: form.description,
           latitude: parseFloat(form.latitude),
           longitude: parseFloat(form.longitude),
-          description: form.description
+          teamName: form.teamName.trim() === '' ? null : form.teamName
         }
       });
-      setForm({ familyId: '', latitude: '', longitude: '', description: '' });
+      setForm({ username: '', latitude: '', longitude: '', description: '', teamName: '' });
     } catch (err) {
       // Apollo error already handled via `error` object
     }
@@ -35,10 +37,11 @@ function RecordEventForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="familyId" placeholder="Family ID" value={form.familyId} onChange={handleChange} />
+      <input name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+      <input name="description" placeholder="Description" value={form.description} onChange={handleChange} />
       <input name="latitude" placeholder="Latitude" value={form.latitude} onChange={handleChange} />
       <input name="longitude" placeholder="Longitude" value={form.longitude} onChange={handleChange} />
-      <input name="description" placeholder="Description" value={form.description} onChange={handleChange} />
+      <input name="teamName" placeholder="Team Name (optional)" value={form.teamName} onChange={handleChange} />
       <button type="submit">Record Event</button>
       {loading && <p>Submitting...</p>}
       {error && <p style={{ color: 'red' }}>❌ {error.message}</p>}

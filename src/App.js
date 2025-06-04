@@ -2,16 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/common/Header';
 import Home from './components/Home';
-import HerdMap from './components/maps/HerdMap';
-import FamilyMap from './components/maps/FamilyMap';
 import NearbyEventsMap from './components/maps/NearbyEventsMap';
-import NearbyFamiliesMap from './components/maps/NearbyFamiliesMap';
-import FamilyStats from './components/charts/FamilyStats';
-import RangerPortal from './components/RangerPortal';
-import RegisterHerdPage from './components/ranger/RegisterHerdPage';
-import RegisterFamilyPage from './components/ranger/RegisterFamilyPage';
-import RecordObservationPage from './components/ranger/RecordObservationPage';
-import RecordEventPage from './components/ranger/RecordEventPage';
+import NearbyWorkoutsMap from './components/maps/NearbyWorkoutsMap';
+import AthletePortal from './components/AthletePortal';
+import RecordEventPage from './components/portal/RecordEventPage';
+import RegisterTeamPage from './components/portal/RegisterTeamPage';
+import RegisterAthletePage from './components/portal/RegisterAthletePage';
+import RecordWorkoutPage from './components/portal/RecordWorkoutPage';
+import WorkoutsMap from './components/maps/WorkoutsMap';
+import WorkoutStats from './components/charts/WorkoutStats';
+import TeamMap from './components/maps/TeamMap';
 
 function App() {
   return (
@@ -19,16 +19,16 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/herd-map" element={<HerdMap />} />
-        <Route path="/family-map" element={<FamilyMap />} />
+        <Route path="/workouts-map" element={<WorkoutsMap />} />
+        <Route path="/team-map" element={<TeamMap />} />
         <Route path="/nearby-events" element={<NearbyEventsMap />} />
-        <Route path="/nearby-families" element={<NearbyFamiliesMap />} />
-        <Route path="/family-stats" element={<FamilyStats />} />
-        <Route path="/ranger" element={<RangerPortal />} />
-        <Route path="/ranger/register-herd" element={<RegisterHerdPage />} />
-        <Route path="/ranger/register-family" element={<RegisterFamilyPage />} />
-        <Route path="/ranger/record-observation" element={<RecordObservationPage />} />
-        <Route path="/ranger/record-event" element={<RecordEventPage />} />
+        <Route path="/nearby-workouts" element={<NearbyWorkoutsMap />} />
+        <Route path="/workout-stats" element={<WorkoutStats />} />  
+        <Route path="/portal" element={<AthletePortal />} />
+        <Route path="/portal/register-team" element={<RegisterTeamPage />} />
+        <Route path="/portal/register-athlete" element={<RegisterAthletePage />} />
+        <Route path="/portal/record-workout" element={<RecordWorkoutPage />} />
+        <Route path="/portal/record-event" element={<RecordEventPage />} />
       </Routes>
     </Router>
   );

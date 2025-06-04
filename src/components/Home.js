@@ -6,11 +6,11 @@ function Home() {
     <div style={{ padding: '2rem' }}>
       <h1>Wildlife Tracker Maps</h1>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li><Link to="/herd-map">📍 Herd Movement Over Time</Link></li>
-        <li><Link to="/family-map">🐾 Family Movement Over Time</Link></li>
+        <li><Link to="/workouts-map">📍 Map of Athlete's Workouts</Link></li>
+        <li><Link to="/team-map">🐾 Team's Workouts Over Time</Link></li>
         <li><Link to="/nearby-events">🎯 Events Near a Location</Link></li>
-        <li><Link to="/nearby-families">👣 Families Near a Location</Link></li>
-        <li><Link to="/family-stats">📈 Family Size & Health Over Time</Link></li>
+        <li><Link to="/nearby-workouts">👣 Workouts Near a Location</Link></li>
+        <li><Link to="/workout-stats">📈 Workout Duration and Distance Over Time</Link></li>
       </ul>
     </div>
   );

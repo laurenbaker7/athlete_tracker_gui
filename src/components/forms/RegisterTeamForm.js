@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { REGISTER_HERD } from '../../graphql/mutations';
+import { REGISTER_TEAM } from '../../graphql/mutations';
 
-function RegisterHerdForm() {
-  const [species, setSpecies] = useState('');
-  const [registerHerd, { data, loading, error }] = useMutation(REGISTER_HERD);
+function RegisterTeamForm() {
+  const [teamName, setTeamName] = useState('');
+  const [registerTeam, { data, loading, error }] = useMutation(REGISTER_TEAM);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!species.trim()) return;
+    if (!teamName.trim()) return;
     try {
-      await registerHerd({ variables: { species } });
-      setSpecies('');
+      await registerTeam({ variables: { teamName } });
+      setTeamName('');
     } catch (err) {
       console.error(err);
     }
@@ -21,16 +21,16 @@ function RegisterHerdForm() {
     <div style={{ marginBottom: '2rem' }}>
       <form onSubmit={handleSubmit}>
         <label>
-          Species:
+          Team Name:
           <input
             type="text"
-            value={species}
-            onChange={(e) => setSpecies(e.target.value)}
+            value={teamName}
+            onChange={(e) => setTeamName(e.target.value)}
             style={{ marginLeft: '0.5rem', padding: '0.25rem' }}
           />
         </label>
         <button type="submit" style={{ marginLeft: '1rem' }}>
-          Register Herd
+          Register Team
         </button>
       </form>
 
@@ -38,11 +38,11 @@ function RegisterHerdForm() {
       {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
       {data && (
         <p style={{ color: 'green' }}>
-          ✅ Herd "{data.registerHerd.species}" registered with ID {data.registerHerd.id}
+          ✅ Team "{data.registerTeam.teamName}" registered with ID {data.registerTeam.id}
         </p>
       )}
     </div>
   );
 }
 
-export default RegisterHerdForm;
+export default RegisterTeamForm;

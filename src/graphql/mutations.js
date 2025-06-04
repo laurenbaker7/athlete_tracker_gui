@@ -1,39 +1,45 @@
 import { gql } from '@apollo/client';
 
-export const REGISTER_HERD = gql`
-  mutation RegisterHerd($species: String!) {
-    registerHerd(species: $species) {
+export const REGISTER_TEAM = gql`
+  mutation RegisterTeam($teamName: String!) {
+    registerTeam(teamName: $teamName) {
       id
-      species
+      teamName
     }
   }
 `;
 
-export const REGISTER_FAMILY = gql`
-  mutation RegisterFamily($name: String!, $species: String!, $herdId: Int!) {
-    registerFamily(name: $name, species: $species, herdId: $herdId) {
+export const REGISTER_ATHLETE = gql`
+  mutation RegisterAthlete($username: String!, $teamName: String) {
+    registerAthlete(username: $username, teamName: $teamName) {
       id
-      name
+      username
+      teamName
     }
   }
 `;
 
-export const RECORD_OBSERVATION = gql`
-  mutation RecordObservation(
-    $familyId: Int!
+export const RECORD_WORKOUT = gql`
+  mutation RecordWorkout(
+    $username: String!
+    $workoutType: String!
+    $duration: Int!
+    $distance: Float!
     $latitude: Float!
     $longitude: Float!
-    $size: Int!
-    $healthRating: Int!
+    $intensity: Int
   ) {
-    recordObservation(
-      familyId: $familyId
+    recordWorkout(
+      username: $username
+      workoutType: $workoutType
+      duration: $duration
+      distance: $distance
       latitude: $latitude
       longitude: $longitude
-      size: $size
-      healthRating: $healthRating
+      intensity: $intensity
     ) {
       id
+      username
       timestamp
     }
   }
@@ -41,18 +47,21 @@ export const RECORD_OBSERVATION = gql`
 
 export const RECORD_EVENT = gql`
   mutation RecordEvent(
-    $familyId: Int!
+    $username: String!
+    $description: String!
     $latitude: Float!
     $longitude: Float!
-    $description: String!
+    $teamName: String
   ) {
     recordEvent(
-      familyId: $familyId
+      username: $username
+      description: $description
       latitude: $latitude
       longitude: $longitude
-      description: $description
+      teamName: $teamName
     ) {
       id
+      username
       timestamp
     }
   }

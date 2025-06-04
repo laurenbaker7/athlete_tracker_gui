@@ -23,7 +23,7 @@ function Header() {
       <h2 style={{ margin: 0, fontSize: '1.25rem' }}>Wildlife Tracker</h2>
       <div>
         <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/ranger" style={linkStyle}>Ranger Portal</Link>
+        <Link to="/portal" style={linkStyle}>Athlete Portal</Link>
       </div>
     </header>
   );
