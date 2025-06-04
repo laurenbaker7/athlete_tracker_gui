@@ -1,17 +1,17 @@
-# WildlifeTracker Frontend
+# AthleteTracker Frontend
 
-This is the React frontend for the WildlifeTracker system, a tool used by rangers to visualize wildlife data and record field observations.
+This is the React frontend for the AthleteTracker system, a tool used by athletes to visualize their workout data and record field observations.
 
 ## Features
 
 - **Interactive Map Views** using Mapbox:
-  - Track family movement over time
-  - View all families in a herd by location
+  - Track athlete movement over time
+  - View all athletes in a team by location
   - Find nearby events and observations based on radius and date range
-- **Family Stats Dashboard**:
-  - Line graphs for family size and health over time
-- **Ranger Portal**:
-  - Submit new herds, families, observations, and events via user-friendly forms
+- **Athlete Stats Dashboard**:
+  - Line graphs for athlete duration and distance over time
+- **Athlete Portal**:
+  - Submit new teams, athletes, workouts, and events via user-friendly forms
 
 ## Tech Stack
 
@@ -25,7 +25,7 @@ This is the React frontend for the WildlifeTracker system, a tool used by ranger
 
 1. **Clone the repo** and navigate to the frontend directory:
    ```bash
-   cd wildlife-tracker-map
+   cd athlete_tracker_map
 
 2. **Install dependencies:** 
    ```bash
@@ -44,7 +44,7 @@ The app will be available at http://localhost:3000.
 ## Folder Structure
 - components/ – Map views, forms, shared UI
 - graphql/ – Queries and mutations
-- pages/ – Route-level components (Home, RangerPortal, etc.)
+- pages/ – Route-level components (Home, AthletePortal, etc.)
 - App.js – Main router and layout
 - index.js – Apollo client and root rendering
    
