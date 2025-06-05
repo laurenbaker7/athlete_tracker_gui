@@ -19,11 +19,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/workout-stats" element={<WorkoutStats />} />  
         <Route path="/workouts-map" element={<WorkoutsMap />} />
         <Route path="/team-map" element={<TeamMap />} />
         <Route path="/nearby-events" element={<NearbyEventsMap />} />
         <Route path="/nearby-workouts" element={<NearbyWorkoutsMap />} />
-        <Route path="/workout-stats" element={<WorkoutStats />} />  
         <Route path="/portal" element={<AthletePortal />} />
         <Route path="/portal/register-team" element={<RegisterTeamPage />} />
         <Route path="/portal/register-athlete" element={<RegisterAthletePage />} />

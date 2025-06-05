@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { Map, Marker, Popup, Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import BackLink from '../common/BackLink';
-import { GET_EVENTS_NEAR_LOCATION } from '../../graphql/queries';
+import { GET_NEARBY_EVENTS } from '../../graphql/queries';
 import { circle as turfCircle, bbox as turfBbox } from '@turf/turf';
 
 function NearbyEventsMap() {
@@ -15,7 +15,7 @@ function NearbyEventsMap() {
   const [queryParams, setQueryParams] = useState(null);
   const [popupInfo, setPopupInfo] = useState(null);
 
-  const { data, loading, error } = useQuery(GET_EVENTS_NEAR_LOCATION, {
+  const { data, loading, error } = useQuery(GET_NEARBY_EVENTS, {
     variables: queryParams,
     skip: !queryParams
   });
@@ -150,7 +150,7 @@ function NearbyEventsMap() {
                 onMouseLeave={() => setPopupInfo(null)}
                 style={{
                   fontSize: '20px',
-                  color: 'orange',
+                  color: '#d62728',
                   cursor: 'pointer',
                   lineHeight: '1'
                 }}
@@ -169,8 +169,12 @@ function NearbyEventsMap() {
               closeOnClick={false}
             >
               <div style={{ fontSize: '12px' }}>
-                {popupInfo.description && <strong>{popupInfo.description}</strong>}
+                <strong>
+                  {popupInfo.username}
+                  {popupInfo.teamName ? ` (${popupInfo.teamName})` : ''}
+                </strong>
                 <br />
+                {popupInfo.description && <>{popupInfo.description}<br /></>}
                 Lat: {popupInfo.latitude}<br />
                 Lng: {popupInfo.longitude}<br />
                 {new Date(popupInfo.timestamp).toLocaleString()}

@@ -1,66 +1,36 @@
 import { gql } from '@apollo/client';
 
-export const GET_FAMILY_OBSERVATIONS = gql`
-  query GetFamily($id: Int!) {
-    family(id: $id) {
+export const GET_WORKOUTS_BY_ATHLETE = gql`
+  query WorkoutsByAthlete($username: String!, $startTime: DateTime, $endTime: DateTime) {
+    workoutsByAthlete(username: $username, startTime: $startTime, endTime: $endTime) {
       id
-      name
-      observations {
-        timestamp
-        size
-        healthRating
-      }
+      duration
+      distance
+      timestamp
     }
   }
 `;
 
-export const GET_FAMILY_LOCATIONS = gql`
-  query GetFamilyLocations($id: Int!) {
-    family(id: $id) {
+export const GET_WORKOUTS_MAP = gql`
+  query WorkoutsByAthlete($username: String!, $startTime: DateTime, $endTime: DateTime) {
+    workoutsByAthlete(username: $username, startTime: $startTime, endTime: $endTime) {
       id
-      name
-      observations {
-        latitude
-        longitude
-        timestamp
-      }
-      events {
-        latitude
-        longitude
-        timestamp
-      }
+      latitude
+      longitude
+      workoutType
+      distance
+      duration
+      timestamp
     }
   }
 `;
 
-export const GET_HERD_LOCATIONS = gql`
-  query GetHerdLocations($id: Int!) {
-    herd(id: $id) {
-      id
-      species
-      families {
-        id
-        name
-        observations {
-          latitude
-          longitude
-          timestamp
-        }
-        events {
-          latitude
-          longitude
-          timestamp
-        }
-      }
-    }
-  }
-`;
-
-export const GET_EVENTS_NEAR_LOCATION = gql`
-  query EventsNearLocation(
+export const GET_NEARBY_EVENTS = gql`
+  query EventsNearby(
     $latitude: Float!
     $longitude: Float!
     $radiusMiles: Float!
+    $teamName: String
     $startTime: DateTime
     $endTime: DateTime
   ) {
@@ -68,45 +38,17 @@ export const GET_EVENTS_NEAR_LOCATION = gql`
       latitude: $latitude
       longitude: $longitude
       radiusMiles: $radiusMiles
-      startTime: $startTime
-      endTime: $endTime
-    ) {
-      latitude
-      longitude
-      timestamp
-      description
-    }
-  }
-`;
-
-export const GET_FAMILIES_NEAR_LOCATION = gql`
-  query FamiliesNearLocation(
-    $latitude: Float!
-    $longitude: Float!
-    $radiusMiles: Float!
-    $startTime: DateTime
-    $endTime: DateTime
-  ) {
-    familiesNearby(
-      latitude: $latitude
-      longitude: $longitude
-      radiusMiles: $radiusMiles
+      teamName: $teamName
       startTime: $startTime
       endTime: $endTime
     ) {
       id
-      name
-      observations {
-        latitude
-        longitude
-        timestamp
-      }
-      events {
-        latitude
-        longitude
-        timestamp
-        description
-      }
+      username
+      description
+      latitude
+      longitude
+      teamName
+      timestamp
     }
   }
 `;
